@@ -3,26 +3,27 @@ import { useState, useRef, useEffect, useCallback } from "react";
 
 const CONFIG = {
   BACKEND_URL: "https://widget.numbero.org",
-  ASSISTANT_ID: "assistant_plumbing_time_plumbing_heating_electric_inc_1780403948",
-  BADGE_TEXT: "Time Plumbing AI",
+  ASSISTANT_ID:
+    "assistant_plumbing_time_plumbing_heating_electric_inc_1780404378",
+  BADGE_TEXT: "303-PLUMBER · Since 1980",
   TITLE: "Time Plumbing, Heating & Electric",
-  SUBTITLE: "Denver's Trusted Plumber Since 1980",
-  START_BUTTON_TEXT: "Call Now — Free",
+  SUBTITLE: "Denver’s most trusted home services · 4.9 ★ · 42+ years",
+  START_BUTTON_TEXT: "Talk to Our Assistant",
   END_BUTTON_TEXT: "End Call",
-  STATUS_READY: "Ready to help",
+  STATUS_READY: "Available 24/7 — tap to connect",
   STATUS_CONNECTED: "Connected",
   GREETING_TEXT:
-    "Hi! I'm the AI receptionist for Time Plumbing, Heating & Electric. How can I help you today?",
-  CONNECTING_TEXT: "Connecting to Time Plumbing...",
-  CONNECTED_TEXT: "Connected — speak now",
-  AGENT_READY_TEXT: "Time Plumbing AI is ready",
+    "Thank you for calling Time Plumbing, Heating and Electric — Brad Apple’s team has been serving Denver since 1980. I’m the AI receptionist, available any time. Are you dealing with an emergency right now, or can I help you schedule a visit?",
+  CONNECTING_TEXT: "Connecting you now...",
+  CONNECTED_TEXT: "Connected — go ahead",
+  AGENT_READY_TEXT: "AI receptionist ready",
   DISCONNECTED_TEXT: "Call ended",
   CONNECTION_FAILED_TEXT:
-    "Connection failed — please call (303) 758-6237 directly",
-  PRIMARY_COLOR: "#1a4b8c",
-  ACCENT_COLOR: "#e85d04",
-  END_BUTTON_COLOR: "#dc2626",
-  SUCCESS_COLOR: "#16a34a",
+    "Connection failed — please call us directly at (303) 758-6237",
+  PRIMARY_COLOR: "#1a2f5e",
+  ACCENT_COLOR: "#c0392b",
+  END_BUTTON_COLOR: "#8B0000",
+  SUCCESS_COLOR: "#2E7D32",
 };
 
 type ConnectionStatus =
@@ -88,7 +89,7 @@ export default function VoiceWidget() {
             setMessages((prev) => [...prev, CONFIG.AGENT_READY_TEXT]);
           }
         } catch {
-          // binary audio data — ignore
+          // binary audio data
         }
       };
 
@@ -112,7 +113,7 @@ export default function VoiceWidget() {
       const processor = audioContextRef.current.createScriptProcessor(
         4096,
         1,
-        1
+        1,
       );
       processor.onaudioprocess = (e) => {
         if (ws.readyState === WebSocket.OPEN) {
@@ -121,7 +122,7 @@ export default function VoiceWidget() {
           for (let i = 0; i < inputData.length; i++) {
             pcm16[i] = Math.max(
               -32768,
-              Math.min(32767, Math.floor(inputData[i] * 32768))
+              Math.min(32767, Math.floor(inputData[i] * 32768)),
             );
           }
           ws.send(pcm16.buffer);
@@ -224,7 +225,7 @@ export default function VoiceWidget() {
             <div
               className="px-6 py-5 text-white"
               style={{
-                background: `linear-gradient(135deg, ${CONFIG.PRIMARY_COLOR} 0%, #0e3160 100%)`,
+                background: `linear-gradient(135deg, ${CONFIG.PRIMARY_COLOR} 0%, #0e1d38 100%)`,
               }}
             >
               <div className="flex items-center justify-between mb-1">

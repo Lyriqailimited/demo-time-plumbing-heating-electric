@@ -101,11 +101,10 @@ function AlertIcon({ className = "w-5 h-5" }: IconProps) {
   );
 }
 
-function CheckCircleIcon({ className = "w-5 h-5" }: IconProps) {
+function CheckIcon({ className = "w-5 h-5" }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-      <polyline points="22 4 12 14.01 9 11.01" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
     </svg>
   );
 }
@@ -121,11 +120,19 @@ function MicIcon({ className = "w-5 h-5" }: IconProps) {
   );
 }
 
-function ArrowRightIcon({ className = "w-5 h-5" }: IconProps) {
+function HeartIcon({ className = "w-5 h-5" }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="5" y1="12" x2="19" y2="12" />
-      <polyline points="12 5 19 12 12 19" />
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  );
+}
+
+function FlagIcon({ className = "w-5 h-5" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <line x1="4" y1="22" x2="4" y2="15" />
     </svg>
   );
 }
@@ -136,23 +143,23 @@ const SERVICES = [
   {
     icon: DropletIcon,
     title: "Plumbing",
-    accent: "#1a4b8c",
+    accent: "#1a2f5e",
     items: [
       "Emergency Repairs (24/7)",
-      "Drain Cleaning & Hydro Jetting",
+      "Drain Cleaning & Hydro-Jetting",
       "Sewer Line Repair (Trenchless)",
-      "Repiping (PEX & Copper)",
+      "Whole-House Repiping",
       "Water Heater Replacement",
-      "Backflow & Sump Pumps",
+      "Sump Pump Installation",
     ],
   },
   {
     icon: ThermometerIcon,
     title: "Heating & Cooling",
-    accent: "#e85d04",
+    accent: "#c0392b",
     items: [
       "Furnace Repair & Replacement",
-      "AC Repair & Replacement",
+      "AC Repair & Installation",
       "Boiler & Steam Boiler Service",
       "Heat Pumps & Mini-Splits",
       "Gas Line Repair & Installation",
@@ -162,36 +169,29 @@ const SERVICES = [
   {
     icon: ZapIcon,
     title: "Electrical",
-    accent: "#1a4b8c",
+    accent: "#1a2f5e",
     items: [
-      "Panel Upgrades & Wiring",
+      "Panel Upgrades & Rewiring",
       "EV Charging Installation",
       "Generator Installation",
       "Whole-House Surge Protection",
-      "Ceiling Fan Installation",
+      "Ceiling Fan & Lighting",
       "Landscape Lighting",
     ],
   },
 ];
 
-const TRUST_BADGES = [
-  { icon: StarIcon, label: "4.9", sublabel: "Google Stars" },
-  { icon: ShieldIcon, label: "Since 1980", sublabel: "46 Years Licensed" },
-  { icon: UsersIcon, label: "10,000+", sublabel: "Clients Served" },
-  { icon: WrenchIcon, label: "Flat-Rate", sublabel: "No Surprises" },
-];
-
 const EMERGENCIES = [
   { icon: DropletIcon, text: "Burst pipe flooding your home" },
-  { icon: ThermometerIcon, text: "No heat in a Denver winter" },
-  { icon: DropletIcon, text: "Sewage backup or overflow" },
-  { icon: ZapIcon, text: "Gas smell or breaker tripping" },
-  { icon: DropletIcon, text: "Dead water heater — no hot water" },
-  { icon: ZapIcon, text: "Power outage in your home" },
+  { icon: ThermometerIcon, text: "No heat on a Denver winter night" },
+  { icon: DropletIcon, text: "Sewage backup or slow drains" },
+  { icon: ZapIcon, text: "Gas smell or sparking outlet" },
+  { icon: DropletIcon, text: "No hot water — dead water heater" },
+  { icon: ZapIcon, text: "Tripped breaker or power loss" },
 ];
 
 const OFFERS = [
-  { amount: "$52 Off", desc: "Any Service" },
+  { amount: "$52 Off", desc: "Any Service Call" },
   { amount: "$100 Off", desc: "Water Heater Install" },
   { amount: "$300 Off", desc: "New Furnace, Boiler, or AC" },
   { amount: "$18.99/mo", desc: "Time Saver Maintenance Plan" },
@@ -200,23 +200,23 @@ const OFFERS = [
 const FAQS = [
   {
     q: "Do you charge extra for nights and weekends?",
-    a: "No. Our flat-rate pricing means the price we quote is the price you pay — whether it's Tuesday at noon or Saturday at midnight. No overtime surcharges, ever.",
+    a: "No. Flat-rate pricing means the quote is the invoice — Tuesday at noon or Saturday at midnight. No overtime surcharges.",
   },
   {
     q: "How fast can you get here for an emergency?",
-    a: "For true emergencies — flooding, gas leaks, no heat in winter — we aim for same-day dispatch. Most emergency calls during business hours are out the door within the hour.",
+    a: "For flooding, gas leaks, or no heat in winter — same-day dispatch. Most emergency calls during business hours are out the door within the hour.",
   },
   {
     q: "Are you licensed and insured?",
-    a: "Continuously licensed since 1980 — 46 years. Fully insured, bonded, and compliant with all Denver metro codes and regulations.",
+    a: "Continuously licensed since 1980. Fully insured, bonded, and compliant with all Denver metro codes and regulations.",
   },
   {
     q: "Do you offer financing?",
-    a: "Yes. For larger projects like HVAC replacements, repiping, or panel upgrades, we offer financing options. Ask when we quote your job.",
+    a: "Yes. For larger jobs like HVAC replacements, repiping, or panel upgrades, we offer financing. Ask when we quote your job.",
   },
   {
     q: "What's the Time Saver Maintenance Plan?",
-    a: "For $18.99/month you get annual tune-ups for plumbing, HVAC, and electrical systems, plus priority scheduling and member discounts. It pays for itself by catching problems before they become emergencies.",
+    a: "For $18.99/month you get annual tune-ups for plumbing, HVAC, and electrical, plus priority scheduling and member discounts. Catches problems before they become emergencies.",
   },
 ];
 
@@ -226,89 +226,76 @@ export default function Home() {
       <div className="noise-overlay" />
 
       {/* ═══════════ HERO ═══════════ */}
-      <section className="hero-section min-h-[92vh] flex flex-col justify-center">
-        <div className="hero-topo" />
-        <div className="hero-pipe-accent" />
+      <section className="hero-section min-h-[94vh] flex flex-col justify-center">
+        <div className="hero-watermark" aria-hidden="true">42</div>
 
         {/* Mountain silhouette */}
-        <div className="absolute bottom-0 left-0 right-0 z-[1]">
-          <svg
-            viewBox="0 0 1440 100"
-            preserveAspectRatio="none"
-            className="w-full h-[80px]"
-            fill="rgba(255,255,255,0.02)"
-          >
-            <path d="M0,100 L0,70 L100,40 L220,60 L350,25 L500,50 L620,10 L760,35 L880,18 L1020,55 L1140,30 L1280,58 L1380,38 L1440,55 L1440,100 Z" />
-          </svg>
-        </div>
-
-        {/* Bottom angled edge */}
         <div className="absolute bottom-0 left-0 right-0 z-[2]">
           <svg
-            viewBox="0 0 1440 48"
+            viewBox="0 0 1440 80"
             preserveAspectRatio="none"
-            className="w-full h-[48px]"
-            fill="#fdfaf5"
+            className="w-full h-[60px] sm:h-[80px]"
           >
-            <path d="M0,48 L0,24 Q720,0 1440,24 L1440,48 Z" />
+            <path d="M0,80 L0,55 L120,38 L280,52 L400,20 L540,45 L680,12 L820,32 L960,18 L1100,48 L1240,28 L1360,50 L1440,40 L1440,80 Z" fill="rgba(255,255,255,0.015)" />
+            <path d="M0,80 L0,65 Q720,40 1440,65 L1440,80 Z" fill="#faf8f5" />
           </svg>
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
-          {/* Eyebrow badge */}
-          <div className="anim-up anim-d1 mb-7">
-            <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-sm font-medium text-white/85 border border-white/12 bg-white/[0.04]">
-              <ShieldIcon className="w-4 h-4 text-copper-500" />
-              Denver&apos;s Trusted Choice Since 1980
+          {/* Eyebrow */}
+          <div className="anim-up anim-d1 mb-8">
+            <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-sm font-medium text-white/80 border border-white/10 bg-white/[0.04]">
+              <ShieldIcon className="w-4 h-4 text-crimson-500" />
+              Family-Owned &middot; Denver, Colorado &middot; Est. 1980
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="anim-up anim-d2 font-heading text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold text-white leading-[1.08] tracking-[-0.02em] max-w-[800px] mb-6">
-            We Were Fixing Denver Pipes{" "}
-            <span className="text-copper-500">
-              Before Your House Was Built
-            </span>
+          <h1 className="anim-up anim-d2 font-heading text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-white leading-[1.06] tracking-[-0.015em] max-w-[820px] mb-7">
+            Your Pipes Don&apos;t Care What Time It Is.{" "}
+            <span className="text-crimson-500">Neither Do We.</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="anim-up anim-d3 text-lg sm:text-xl text-white/65 max-w-2xl mb-10 leading-relaxed">
-            46 years. 10,000+ homes. One promise — fixed right the first time.
-            Plumbing, heating & electrical. We answer at 2 AM when it matters
-            most.
+          <p className="anim-up anim-d3 text-lg sm:text-xl text-white/60 max-w-2xl mb-10 leading-relaxed font-body">
+            42 years. 10,000+ Denver homes. One promise — fixed right the first
+            time. Plumbing, heating, and electrical under one roof. Call
+            303-PLUMBER — we answer at 2&nbsp;AM.
           </p>
 
           {/* CTAs */}
-          <div className="anim-up anim-d4 flex flex-col sm:flex-row gap-4 mb-14">
+          <div className="anim-up anim-d4 flex flex-col sm:flex-row gap-4 mb-16">
             <a
               href={PHONE_HREF}
-              className="inline-flex items-center justify-center gap-3 bg-copper-600 hover:bg-copper-500 text-white font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] cta-glow"
+              className="inline-flex items-center justify-center gap-3 bg-crimson-600 hover:bg-crimson-500 text-white font-bold text-lg px-9 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] cta-glow"
             >
               <PhoneIcon className="w-5 h-5" />
               Call {PHONE}
             </a>
             <a
               href="#ai-receptionist"
-              className="inline-flex items-center justify-center gap-3 bg-white/[0.07] hover:bg-white/[0.12] text-white font-semibold text-lg px-8 py-4 rounded-xl border border-white/15 hover:border-white/25 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-3 bg-white/[0.06] hover:bg-white/[0.12] text-white font-semibold text-lg px-9 py-4 rounded-xl border border-white/12 hover:border-white/22 transition-all duration-300"
             >
               <MicIcon className="w-5 h-5" />
               Talk to AI Receptionist
             </a>
           </div>
 
-          {/* Trust badges */}
-          <div className="anim-up anim-d5 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {TRUST_BADGES.map((b) => (
-              <div
-                key={b.label}
-                className="trust-pill rounded-xl px-4 py-3 text-center"
-              >
-                <b.icon className="w-5 h-5 text-copper-500 mx-auto mb-1.5" />
-                <div className="text-white font-heading font-bold text-lg leading-tight">
-                  {b.label}
+          {/* Trust Stats */}
+          <div className="anim-up anim-d5 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            {[
+              { value: "42", label: "Years in Denver", icon: ShieldIcon },
+              { value: "4.9", label: "Google Stars", icon: StarIcon },
+              { value: "10K+", label: "Clients Served", icon: UsersIcon },
+              { value: "Flat", label: "Rate Pricing", icon: WrenchIcon },
+            ].map((stat) => (
+              <div key={stat.label} className="trust-stat rounded-xl px-4 py-4 text-center">
+                <stat.icon className="w-5 h-5 text-crimson-400 mx-auto mb-2" />
+                <div className="text-white font-heading font-extrabold text-2xl sm:text-3xl leading-none">
+                  {stat.value}
                 </div>
-                <div className="text-white/50 text-xs tracking-wide uppercase mt-0.5">
-                  {b.sublabel}
+                <div className="text-white/45 text-xs tracking-wide uppercase mt-1.5 font-medium">
+                  {stat.label}
                 </div>
               </div>
             ))}
@@ -316,61 +303,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ EMERGENCY STRIP ═══════════ */}
-      <section className="py-12 sm:py-16 bg-warm-50">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="rounded-2xl p-6 sm:p-8 border-2 border-copper-600/15 bg-gradient-to-r from-orange-50/80 to-amber-50/80">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2.5 rounded-lg bg-copper-600/10">
-                <AlertIcon className="w-6 h-6 text-copper-600" />
+      {/* ═══════════ EMERGENCY BAND ═══════════ */}
+      <section className="emergency-band py-8 sm:py-10">
+        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="p-2 rounded-lg bg-white/10">
+                <AlertIcon className="w-7 h-7 text-white" />
               </div>
-              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-gray-900">
-                Emergency? We&apos;re on our way.
-              </h2>
+              <div>
+                <h2 className="font-heading text-xl sm:text-2xl font-bold text-white">
+                  Emergency? We answer at 2&nbsp;AM.
+                </h2>
+                <p className="text-white/70 text-sm mt-0.5">
+                  Flat-rate pricing. No overtime charges. No surprises.
+                </p>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 flex-1">
               {EMERGENCIES.map((item) => (
                 <div
                   key={item.text}
-                  className="flex items-center gap-3 bg-white rounded-lg px-4 py-3 shadow-sm"
+                  className="flex items-center gap-2 bg-white/8 rounded-lg px-3 py-2.5"
                 >
-                  <item.icon className="w-5 h-5 flex-shrink-0 text-navy-700" />
-                  <span className="text-sm font-medium text-gray-700">
+                  <item.icon className="w-4 h-4 flex-shrink-0 text-white/70" />
+                  <span className="text-xs sm:text-sm font-medium text-white/85">
                     {item.text}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center gap-2 bg-copper-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-copper-500 transition-all"
-              >
-                <PhoneIcon className="w-5 h-5" />
-                Call Now — 24/7 Emergency Line
-              </a>
-              <span className="text-sm text-gray-500">
-                Flat-rate pricing. No overtime charges. No surprises.
-              </span>
-            </div>
+            <a
+              href={PHONE_HREF}
+              className="inline-flex items-center justify-center gap-2 bg-white text-crimson-700 font-bold px-6 py-3.5 rounded-xl hover:bg-white/95 transition-all flex-shrink-0"
+            >
+              <PhoneIcon className="w-5 h-5" />
+              Call Now — 24/7
+            </a>
           </div>
         </div>
       </section>
 
       {/* ═══════════ SERVICES ═══════════ */}
-      <section className="py-16 sm:py-24 bg-warm-50">
+      <section className="py-20 sm:py-28 bg-warm-50">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="text-center mb-14">
-            <span className="inline-block text-copper-600 font-semibold text-sm tracking-[0.15em] uppercase mb-3">
+          <div className="text-center mb-16">
+            <span className="inline-block text-crimson-600 font-semibold text-sm tracking-[0.15em] uppercase mb-3 font-body">
               Full-Service Home Experts
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               One Call. Three Trades.{" "}
               <span className="text-navy-700">Done Right.</span>
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto text-lg">
+            <p className="text-gray-500 max-w-xl mx-auto text-lg font-body">
               Why juggle three contractors? We handle plumbing, HVAC, and
               electrical under one roof — same quality, same guarantee.
             </p>
@@ -380,27 +367,22 @@ export default function Home() {
             {SERVICES.map((svc) => (
               <div
                 key={svc.title}
-                className="service-tile rounded-2xl p-7 sm:p-8"
+                className="service-card rounded-2xl p-7 sm:p-8"
+                style={{ "--card-accent": svc.accent } as React.CSSProperties}
               >
                 <div
                   className="p-3 rounded-xl inline-flex mb-5"
                   style={{ background: `${svc.accent}0D` }}
                 >
-                  <svc.icon
-                    className="w-7 h-7"
-                    style={{ color: svc.accent }}
-                  />
+                  <svc.icon className="w-7 h-7" style={{ color: svc.accent }} />
                 </div>
                 <h3 className="font-heading text-xl font-bold text-gray-900 mb-5">
                   {svc.title}
                 </h3>
                 <ul className="space-y-3">
                   {svc.items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2.5 text-sm text-gray-600"
-                    >
-                      <CheckCircleIcon
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600 font-body">
+                      <CheckIcon
                         className="w-4 h-4 mt-0.5 flex-shrink-0"
                         style={{ color: svc.accent }}
                       />
@@ -414,59 +396,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Copper divider ── */}
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div
-          className="h-[3px] rounded-full"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, #e85d04, #1a4b8c, #e85d04, transparent)",
-            opacity: 0.18,
-          }}
-        />
-      </div>
-
       {/* ═══════════ TRUST / PROOF ═══════════ */}
-      <section className="py-16 sm:py-24 bg-warm-50">
+      <section className="py-20 sm:py-28 bg-warm-50">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Divider */}
+          <div className="h-[3px] rounded-full mb-20" style={{ background: "linear-gradient(90deg, transparent, #1a2f5e20, #c0392b30, #1a2f5e20, transparent)" }} />
+
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
             {/* Left: Trust points */}
             <div>
-              <span className="inline-block text-copper-600 font-semibold text-sm tracking-[0.15em] uppercase mb-3">
+              <span className="inline-block text-crimson-600 font-semibold text-sm tracking-[0.15em] uppercase mb-3 font-body">
                 Why Denver Trusts Us
               </span>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
-                46 Years of Getting It Right the First Time
+              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-10">
+                42 Years of Getting It Right the First Time
               </h2>
 
-              <div className="space-y-6">
+              <div className="space-y-7">
                 {[
                   {
                     title: "Licensed Since 1980",
-                    desc: "Brad Apple has been doing this for 46 years. We've outlasted trends, recessions, and every fly-by-night competitor in Denver.",
+                    desc: "Brad Apple built this company from the ground up. We've outlasted trends, recessions, and every fly-by-night competitor in Denver.",
                   },
                   {
-                    title: "4.9 Google Rating",
-                    desc: "Not from 12 reviews — from thousands of Denver homeowners who trusted us with their homes and came back again.",
+                    title: "4.9-Star Google Rating",
+                    desc: "Not from a dozen reviews. From thousands of Denver homeowners who trusted us and came back again.",
                   },
                   {
-                    title: "Flat-Rate Pricing",
+                    title: "Flat-Rate Pricing, Always",
                     desc: "We quote the price before we start. The number on the estimate is the number on the invoice. Period.",
                   },
                   {
                     title: "One-Trip Resolution",
-                    desc: "Our trucks carry 3,000+ parts. Most jobs are done same-day, same-visit. No return trips, no waiting around.",
+                    desc: "Our trucks carry 3,000+ parts. Most jobs finished same-day, same-visit. No return trips, no waiting.",
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex gap-4">
-                    <div className="mt-0.5 p-1.5 rounded-lg flex-shrink-0 bg-navy-700/5">
-                      <CheckCircleIcon className="w-5 h-5 text-navy-700" />
+                    <div className="mt-0.5 w-8 h-8 rounded-lg flex-shrink-0 bg-navy-700/6 flex items-center justify-center">
+                      <CheckIcon className="w-4 h-4 text-navy-700" />
                     </div>
                     <div>
-                      <h4 className="font-heading font-bold text-gray-900 mb-1">
+                      <h4 className="font-heading font-bold text-gray-900 mb-1 text-lg">
                         {item.title}
                       </h4>
-                      <p className="text-sm text-gray-500 leading-relaxed">
+                      <p className="text-sm text-gray-500 leading-relaxed font-body">
                         {item.desc}
                       </p>
                     </div>
@@ -474,34 +447,51 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Testimonial callout */}
-              <div className="mt-8 p-5 rounded-xl bg-white border border-navy-700/8 shadow-sm">
-                <div className="flex gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon
-                      key={i}
-                      className="w-4 h-4 text-amber-400"
-                    />
-                  ))}
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed italic">
-                  &ldquo;KC was out today for a drain issue, outstanding
-                  customer service! And lots of knowledgeable information. I will
-                  be having him come back to do other services at two locations!
-                  This young man is an Asset to Time Plumbing!&rdquo;
-                </p>
-                <p className="text-xs text-gray-400 mt-2">
-                  — Verified Google Review
-                </p>
+              {/* Named Technicians */}
+              <div className="mt-10 grid grid-cols-2 gap-4">
+                {[
+                  {
+                    name: "KC",
+                    review: "Outstanding customer service! This young man is an Asset to Time Plumbing!",
+                    reviewer: "Michael Blackwood",
+                  },
+                  {
+                    name: "Chad",
+                    review: "Got the job done right and was knowledgeable and very helpful! We have used Time Plumbing for years.",
+                    reviewer: "Lytisha M.",
+                  },
+                ].map((tech) => (
+                  <div key={tech.name} className="tech-card rounded-xl p-5">
+                    <div className="w-10 h-10 rounded-full bg-navy-700 flex items-center justify-center text-white font-heading font-bold text-lg mb-3">
+                      {tech.name[0]}
+                    </div>
+                    <h4 className="font-heading font-bold text-gray-900 mb-1">
+                      {tech.name}
+                    </h4>
+                    <p className="text-xs text-gray-400 mb-2 font-body">Denver Technician</p>
+                    <div className="flex gap-0.5 mb-2">
+                      {[...Array(5)].map((_, i) => (
+                        <StarIcon key={i} className="w-3 h-3 text-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-xs text-gray-500 italic leading-relaxed font-body">
+                      &ldquo;{tech.review}&rdquo;
+                    </p>
+                    <p className="text-[11px] text-gray-400 mt-1.5 font-body">
+                      — {tech.reviewer}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Right: Offers */}
+            {/* Right: Offers + Community */}
             <div>
+              {/* Offers Card */}
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-navy-700/6">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 rounded-lg bg-copper-600/10">
-                    <StarIcon className="w-5 h-5 text-copper-600" />
+                  <div className="p-2 rounded-lg bg-crimson-600/10">
+                    <StarIcon className="w-5 h-5 text-crimson-600" />
                   </div>
                   <h3 className="font-heading text-xl font-bold text-gray-900">
                     Current Offers
@@ -510,14 +500,11 @@ export default function Home() {
 
                 <div className="space-y-3">
                   {OFFERS.map((offer) => (
-                    <div
-                      key={offer.amount}
-                      className="offer-row flex items-center gap-4 rounded-xl px-5 py-4"
-                    >
-                      <span className="font-heading font-extrabold text-2xl text-copper-600 whitespace-nowrap">
+                    <div key={offer.amount} className="offer-card flex items-center gap-4 rounded-xl px-5 py-4">
+                      <span className="font-heading font-extrabold text-2xl text-crimson-600 whitespace-nowrap">
                         {offer.amount}
                       </span>
-                      <span className="text-gray-700 font-medium">
+                      <span className="text-gray-700 font-medium font-body">
                         {offer.desc}
                       </span>
                     </div>
@@ -535,28 +522,46 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Community section */}
+              <div className="mt-6 community-badge rounded-2xl p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <FlagIcon className="w-6 h-6 text-navy-700" />
+                  <h3 className="font-heading text-lg font-bold text-gray-900">
+                    Denver Proud
+                  </h3>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed font-body mb-4">
+                  Owner Brad Apple doesn&apos;t just serve Denver — he invests in it.
+                  Time Plumbing donates 2% of income to local causes, flies
+                  Colorado&apos;s largest American flag, and has been a fixture of
+                  the community since 1980.
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="flex items-center gap-2 text-sm">
+                    <HeartIcon className="w-4 h-4 text-crimson-600 flex-shrink-0" />
+                    <span className="text-gray-600 font-body">2% Income to Charity</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <FlagIcon className="w-4 h-4 text-navy-700 flex-shrink-0" />
+                    <span className="text-gray-600 font-body">Colorado&apos;s Largest Flag</span>
+                  </div>
+                </div>
+              </div>
+
               {/* Mini trust badges */}
-              <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="mt-4 grid grid-cols-2 gap-3">
                 <div className="flex items-center gap-2.5 bg-white rounded-xl px-4 py-3 border border-gray-100">
                   <ShieldIcon className="w-5 h-5 text-navy-700" />
                   <div>
-                    <div className="text-sm font-bold text-gray-900">
-                      Fully Licensed
-                    </div>
-                    <div className="text-xs text-gray-400">
-                      Bonded & Insured
-                    </div>
+                    <div className="text-sm font-bold text-gray-900">Fully Licensed</div>
+                    <div className="text-xs text-gray-400 font-body">Bonded &amp; Insured</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2.5 bg-white rounded-xl px-4 py-3 border border-gray-100">
-                  <ClockIcon className="w-5 h-5 text-copper-600" />
+                  <ClockIcon className="w-5 h-5 text-crimson-600" />
                   <div>
-                    <div className="text-sm font-bold text-gray-900">
-                      24/7 Emergency
-                    </div>
-                    <div className="text-xs text-gray-400">
-                      Always Available
-                    </div>
+                    <div className="text-sm font-bold text-gray-900">24/7 Emergency</div>
+                    <div className="text-xs text-gray-400 font-body">Always Available</div>
                   </div>
                 </div>
               </div>
@@ -566,30 +571,30 @@ export default function Home() {
       </section>
 
       {/* ═══════════ AI RECEPTIONIST ═══════════ */}
-      <section id="ai-receptionist" className="dark-section py-16 sm:py-24">
+      <section id="ai-receptionist" className="dark-section py-20 sm:py-28">
         <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-sm font-medium text-white/75 border border-white/10 bg-white/[0.04] mb-6">
-              <MicIcon className="w-4 h-4 text-copper-500" />
+          <div className="text-center mb-14">
+            <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-sm font-medium text-white/70 border border-white/8 bg-white/[0.03] mb-6 font-body">
+              <MicIcon className="w-4 h-4 text-crimson-400" />
               New — AI-Powered
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5">
               Your After-Hours Receptionist{" "}
-              <span className="text-copper-500">Never Sleeps</span>
+              <span className="text-crimson-400">Never Sleeps</span>
             </h2>
-            <p className="text-white/60 max-w-2xl mx-auto text-lg leading-relaxed">
+            <p className="text-white/55 max-w-2xl mx-auto text-lg leading-relaxed font-body">
               Pipe burst at midnight? Our AI voice receptionist picks up
               instantly — books your emergency visit, collects your info, and
               dispatches help. No hold music. No voicemail.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-5 mb-10">
+          <div className="grid sm:grid-cols-3 gap-5 mb-12">
             {[
               {
                 icon: ClockIcon,
                 title: "24/7 Availability",
-                desc: "Answers every call — nights, weekends, holidays. Your customers never hit voicemail again.",
+                desc: "Answers every call — nights, weekends, holidays. Your emergency is never sent to voicemail.",
               },
               {
                 icon: MicIcon,
@@ -599,18 +604,15 @@ export default function Home() {
               {
                 icon: PhoneIcon,
                 title: "Instant Booking",
-                desc: "Schedules visits on the spot. Collects name, address, urgency, and preferred time slot.",
+                desc: "Schedules visits on the spot. Collects name, address, urgency, and preferred time — no delays.",
               },
             ].map((item) => (
-              <div
-                key={item.title}
-                className="glass-card rounded-xl p-6"
-              >
-                <item.icon className="w-8 h-8 text-copper-500 mb-4" />
+              <div key={item.title} className="glass-panel rounded-xl p-7">
+                <item.icon className="w-8 h-8 text-crimson-400 mb-5" />
                 <h3 className="font-heading text-lg font-bold text-white mb-2">
                   {item.title}
                 </h3>
-                <p className="text-white/50 text-sm leading-relaxed">
+                <p className="text-white/45 text-sm leading-relaxed font-body">
                   {item.desc}
                 </p>
               </div>
@@ -618,11 +620,11 @@ export default function Home() {
           </div>
 
           <div className="text-center">
-            <p className="text-white/40 text-sm mb-3">
+            <p className="text-white/35 text-sm mb-3 font-body">
               Try it now — tap the microphone button in the corner
             </p>
-            <div className="inline-flex items-center gap-2 text-copper-500 font-semibold text-sm">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 text-crimson-400 font-semibold text-sm font-body">
+              <span className="w-2 h-2 rounded-full bg-green-400" style={{ animation: "badge-pulse 2s ease-in-out infinite" }} />
               AI Receptionist Online
             </div>
           </div>
@@ -630,14 +632,14 @@ export default function Home() {
       </section>
 
       {/* ═══════════ FAQ ═══════════ */}
-      <section className="py-16 sm:py-24 bg-warm-50">
+      <section className="py-20 sm:py-28 bg-warm-50">
         <div className="max-w-3xl mx-auto px-5 sm:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
               Common Questions
             </h2>
-            <p className="text-gray-500">
-              Straight answers from 46 years of experience.
+            <p className="text-gray-500 font-body">
+              Straight answers from 42 years of experience.
             </p>
           </div>
 
@@ -651,7 +653,7 @@ export default function Home() {
                 <AccordionTrigger className="text-left font-heading font-semibold text-gray-900 py-5 hover:no-underline">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-500 leading-relaxed pb-5">
+                <AccordionContent className="text-gray-500 leading-relaxed pb-5 font-body">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -661,34 +663,34 @@ export default function Home() {
       </section>
 
       {/* ═══════════ FINAL CTA ═══════════ */}
-      <section className="dark-section py-16 sm:py-24">
+      <section className="dark-section py-20 sm:py-28">
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5">
-            The Number Denver Has Trusted Since 1980
+            The Number Denver Has Called Since 1980
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Whether it&apos;s a midnight emergency or a Monday morning tune-up,
+          <p className="text-white/55 text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-body">
+            Whether it&apos;s a midnight pipe burst or a Monday morning tune-up,
             we pick up. 303-PLUMBER — one call, and it&apos;s handled.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
             <a
               href={PHONE_HREF}
-              className="inline-flex items-center justify-center gap-3 bg-copper-600 hover:bg-copper-500 text-white font-bold text-lg px-10 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] cta-glow"
+              className="inline-flex items-center justify-center gap-3 bg-crimson-600 hover:bg-crimson-500 text-white font-bold text-lg px-10 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] cta-glow"
             >
               <PhoneIcon className="w-5 h-5" />
               {PHONE}
             </a>
             <a
               href="#ai-receptionist"
-              className="inline-flex items-center justify-center gap-3 bg-white/[0.07] hover:bg-white/[0.12] text-white font-semibold text-lg px-10 py-4 rounded-xl border border-white/15 hover:border-white/25 transition-all"
+              className="inline-flex items-center justify-center gap-3 bg-white/[0.06] hover:bg-white/[0.12] text-white font-semibold text-lg px-10 py-4 rounded-xl border border-white/12 hover:border-white/22 transition-all"
             >
               <MicIcon className="w-5 h-5" />
               Talk to AI Receptionist
             </a>
           </div>
 
-          <p className="text-white/30 text-sm">
+          <p className="text-white/25 text-sm font-body">
             $52 off your first service &middot; Flat-rate pricing &middot; No
             overtime charges
           </p>
@@ -696,20 +698,20 @@ export default function Home() {
       </section>
 
       {/* ═══════════ FOOTER ═══════════ */}
-      <footer className="py-12 sm:py-16" style={{ background: "#06101f" }}>
+      <footer className="py-14 sm:py-18" style={{ background: "#060d1a" }}>
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
             <div className="sm:col-span-2 lg:col-span-1">
               <h3 className="font-heading text-xl font-bold text-white mb-3">
                 Time Plumbing, Heating &amp; Electric
               </h3>
-              <p className="text-white/40 text-sm leading-relaxed mb-4">
-                Family-owned and operated since 1980. Serving Denver metro with
-                plumbing, HVAC, and electrical — three trades under one roof.
+              <p className="text-white/35 text-sm leading-relaxed mb-4 font-body">
+                Family-owned and operated since 1980. Three trades under one
+                roof — plumbing, HVAC, and electrical for the Denver metro.
               </p>
               <a
                 href={PHONE_HREF}
-                className="inline-flex items-center gap-2 text-copper-500 font-semibold hover:text-copper-400 transition-colors"
+                className="inline-flex items-center gap-2 text-crimson-400 font-semibold hover:text-crimson-300 transition-colors"
               >
                 <PhoneIcon className="w-4 h-4" />
                 {PHONE}
@@ -720,7 +722,7 @@ export default function Home() {
               <h4 className="font-heading font-bold text-white mb-3 text-sm tracking-wider uppercase">
                 Services
               </h4>
-              <ul className="space-y-2 text-sm text-white/40">
+              <ul className="space-y-2 text-sm text-white/35 font-body">
                 <li>Emergency Plumbing</li>
                 <li>Drain Cleaning</li>
                 <li>HVAC Repair</li>
@@ -734,7 +736,7 @@ export default function Home() {
               <h4 className="font-heading font-bold text-white mb-3 text-sm tracking-wider uppercase">
                 Company
               </h4>
-              <ul className="space-y-2 text-sm text-white/40">
+              <ul className="space-y-2 text-sm text-white/35 font-body">
                 <li>Licensed Since 1980</li>
                 <li>Owner: Brad Apple</li>
                 <li>Denver Metro Area</li>
@@ -746,7 +748,7 @@ export default function Home() {
               <h4 className="font-heading font-bold text-white mb-3 text-sm tracking-wider uppercase">
                 Get In Touch
               </h4>
-              <ul className="space-y-2 text-sm text-white/40">
+              <ul className="space-y-2 text-sm text-white/35 font-body">
                 <li>Phone: {PHONE}</li>
                 <li>Email: service@303plumber.com</li>
                 <li>Denver, CO</li>
@@ -755,12 +757,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-white/25 text-sm">
-              &copy; 2024 Time Plumbing, Heating &amp; Electric Inc. All rights
-              reserved.
+          <div className="border-t border-white/6 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-white/20 text-sm font-body">
+              &copy; 2025 Time Plumbing, Heating &amp; Electric Inc. All rights reserved.
             </p>
-            <div className="flex items-center gap-1.5 text-white/25 text-sm">
+            <div className="flex items-center gap-1.5 text-white/20 text-sm font-body">
               <span>4.9</span>
               <StarIcon className="w-3.5 h-3.5 text-amber-500" />
               <span>on Google &middot; 10,000+ clients served</span>
