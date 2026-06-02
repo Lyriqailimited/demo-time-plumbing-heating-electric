@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    color: #1a1a1a;
+    background: #faf8f5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), serif;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ──────────────────────────────
+   HERO — custom-static-heritage-rivet-grid
+   Industrial rivet dot grid + diagonal red
+   accent stripes over deep navy gradient
+   ────────────────────────────── */
+.hero-section {
+  position: relative;
+  background: linear-gradient(170deg, #060d1a 0%, #0e1d38 35%, #1a2f5e 75%, #1e3668 100%);
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle 1.5px at 24px 24px, rgba(255,255,255,0.045) 1.5px, transparent 1.5px),
+    radial-gradient(circle 1.5px at 72px 72px, rgba(255,255,255,0.035) 1.5px, transparent 1.5px),
+    repeating-linear-gradient(
+      -35deg,
+      transparent,
+      transparent 80px,
+      rgba(192,57,43,0.055) 80px,
+      rgba(192,57,43,0.055) 81.5px
+    ),
+    repeating-linear-gradient(
+      55deg,
+      transparent,
+      transparent 110px,
+      rgba(255,255,255,0.02) 110px,
+      rgba(255,255,255,0.02) 111px
+    );
+  background-size: 48px 48px, 96px 96px, auto, auto;
+  z-index: 1;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 650px 300px at 10% 90%, rgba(192,57,43,0.1), transparent),
+    radial-gradient(ellipse 500px 250px at 90% 10%, rgba(26,47,94,0.2), transparent),
+    radial-gradient(ellipse 800px 500px at 50% 50%, rgba(6,13,26,0.25), transparent);
+  z-index: 1;
+}
+
+.hero-watermark {
+  position: absolute;
+  top: 8%;
+  right: -5%;
+  font-family: var(--font-heading), serif;
+  font-weight: 800;
+  font-size: clamp(200px, 25vw, 380px);
+  line-height: 1;
+  color: rgba(255,255,255,0.018);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ──────────────────────────────
+   ANIMATIONS
+   ────────────────────────────── */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.anim-up {
+  animation: slide-up 0.65s ease-out forwards;
+}
+
+.anim-d1 { animation-delay: 0.08s; opacity: 0; }
+.anim-d2 { animation-delay: 0.18s; opacity: 0; }
+.anim-d3 { animation-delay: 0.3s; opacity: 0; }
+.anim-d4 { animation-delay: 0.44s; opacity: 0; }
+.anim-d5 { animation-delay: 0.58s; opacity: 0; }
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 14px rgba(192,57,43,0.3); }
+  50% { box-shadow: 0 0 28px rgba(192,57,43,0.5); }
+}
+
+.cta-glow {
+  animation: glow-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ──────────────────────────────
+   EMERGENCY BAND
+   ────────────────────────────── */
+.emergency-band {
+  background: linear-gradient(135deg, #7a1a1a 0%, #c0392b 50%, #8B0000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.emergency-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 18px,
+    rgba(255,255,255,0.03) 18px,
+    rgba(255,255,255,0.03) 19px
+  );
+  pointer-events: none;
+}
+
+/* ──────────────────────────────
+   SECTION STYLES
+   ────────────────────────────── */
+.service-card {
+  background: white;
+  border: 1px solid rgba(26,47,94,0.06);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--card-accent, #1a2f5e);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card:hover {
+  border-color: rgba(26,47,94,0.15);
+  box-shadow: 0 16px 48px rgba(6,13,26,0.1);
+  transform: translateY(-4px);
+}
+
+.trust-stat {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
+}
+
+.trust-stat:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-2px);
+}
+
+.glass-panel {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.dark-section {
+  background: linear-gradient(172deg, #060d1a 0%, #0e1d38 45%, #1a2f5e 100%);
+  position: relative;
+}
+
+.dark-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle 1px at 24px 24px, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.offer-card {
+  background: rgba(192,57,43,0.04);
+  border: 1px solid rgba(192,57,43,0.08);
+  transition: all 0.25s ease;
+}
+
+.offer-card:hover {
+  background: rgba(192,57,43,0.08);
+  border-color: rgba(192,57,43,0.18);
+}
+
+.tech-card {
+  background: white;
+  border: 1px solid rgba(26,47,94,0.06);
+  transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+  box-shadow: 0 8px 32px rgba(6,13,26,0.08);
+  transform: translateY(-2px);
+}
+
+.community-badge {
+  background: linear-gradient(135deg, rgba(26,47,94,0.04), rgba(192,57,43,0.04));
+  border: 1px solid rgba(26,47,94,0.08);
+}
+
+/* ──────────────────────────────
+   NOISE TEXTURE
+   ────────────────────────────── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.02;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px;
+}
